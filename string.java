@@ -1,3 +1,34 @@
+//<--------------------------reverse words in a string 3------------------>
+class Solution {
+    public String reverseWords(String s) {
+    String words[]=s.split(" ");
+    StringBuilder res=new StringBuilder();
+    // String res="";
+    for(int i=0;i<words.length;i++)
+    {
+        String word=words[i];
+        for(int j=word.length()-1;j>=0;j--)
+        {
+        //    res+=word.charAt(j);
+              res.append(word.charAt(j));
+        }
+         if(i<words.length-1)
+         {
+            //  res+=" ";
+            res.append(" ");
+         }
+    }
+    //return res;
+    return res.toString();
+    }    
+}
+//when we use String, every time we add a new object is created is created which eats up the memory.This slows down the execution.---->not efficient
+//in case of String, we have to rewrite everytime bcz it cannot be erased
+//when Stringbuilder is used, it adds one by one to the same object(without creating a new object),this executes faster and uses less memory.------->efficient
+//in case of StringBuilder, no need of rewriting
+
+
+
 //<------------------------------reversing vowels in a string----------->
 class Solution {
     public String reverseVowels(String s) {
@@ -139,5 +170,6 @@ class Solution {
         return count;
     }
 }
+
 
 
