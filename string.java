@@ -83,6 +83,13 @@ class Solution {
 
 
 //<------------3330.find the original typed string------>
+//You are given a string word, which represents the final output displayed on Alice's screen.
+//Return the total number of possible original strings that Alice might have intended to type.
+//-->Example 1:
+Input: word = "abbcccc"
+Output: 5
+//-->Explanation:
+The possible strings are: "abbcccc", "abbccc", "abbcc", "abbc", and "abcccc".
  class Solution {
      public int possibleStringCount(String word) {
       
@@ -91,21 +98,21 @@ class Solution {
         
              if( word.charAt(i) == word.charAt(i+1) ){
                  System.out.println(i);
-                 n++;
-      
-         
-           
+                 n++;      
              }
      }
      return n;
          }
  }
 
+
 //<--------------------125.valid palindrome--------------------->
+//A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, 
+//it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 class Solution {
     public boolean isPalindrome(String s) {
        
-       s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+       s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase(); 
         int left=0;
         int right=s.length()-1;
         while(left<right){
@@ -118,6 +125,10 @@ class Solution {
         return true;
     }
 }
+//replaceAll("[^a-zA-Z0-9]", "")
+//-->[^ ] → means NOT
+//--->a-zA-Z0-9 → letters and digits
+//-->Removes spaces, commas, symbols, punctuation
 
 //<------------------58.length of last word---------------------->
 class Solution {
@@ -135,7 +146,34 @@ class Solution {
 
     }
 }
-  
+
+<----------------------------first unique character in a string-------------------------------------------->
+//We use a HashMap when we need to store data as key–value pairs and retrieve or update it quickly.
+
+class Solution {
+    public int firstUniqChar(String s) {
+        HashMap<Character , Integer>map=new HashMap<>();  //HashMap called map is created
+        for(char c:s.toCharArray()){    //given string is converted into character array and stored in variable c----{'l','e','e','t','c','o','d','e'}.each of its frequency is set to 0
+            map.put(c,map.getOrDefault(c,0)+1);     //iteration begins,in the array c if the char is already present then get its frequency or if not present get default value(0). then increment by 1
+        }      
+        for(int i=0;i<s.length();i++) //checks for first character having freq=1
+        {
+            if(map.get(s.charAt(i))==1)  //if the frequency of the char is 1 then returns its index
+                return i;
+        }
+  return -1;
+    }
+}
+//Given a string:"leetcode"
+l → how many times?
+e → how many times?
+t → how many times?
+So the natural structure is: character → frequency
+This is a key → value relationship.
+
+
+
+
 //<----------------------Count Indices to Balance Even and Odd Sums-------------------->
 class Solution {
     public int cntWays(int[] arr) {
@@ -170,6 +208,7 @@ class Solution {
         return count;
     }
 }
+
 
 
 
