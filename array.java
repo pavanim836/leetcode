@@ -33,4 +33,56 @@ class Solution {
     }
 }
 
+//<-------------------------------best time to buy and sell a stock---------------------------->
+class Solution {
+    public int maxProfit(int[] prices) {
 
+        int buy = prices[0];  // cheapest price so far
+        int bigg = 0;         // max profit so far
+
+        for (int i = 1; i < prices.length; i++) {
+
+            if (prices[i] < buy) {
+                buy = prices[i];   // cheaper buying day
+            } else {
+                int profit = prices[i] - buy;
+                if (profit > bigg) {
+                    bigg = profit; // better profit
+                }
+            }
+        }
+        return bigg;
+    }
+}
+//Walk day by day (SLOW)
+//Day 1 → price = 7(No previous day).
+//-->Buy here
+//buy = 7
+// bigg = 0
+
+// Day 2 → price = 1
+// Ask:Is 1 cheaper than 7?
+// YES, So:buy = 1   // better day to buy
+
+// Day 3 → price = 5
+// Ask:If I sell today, profit?
+// profit = 5 - 1 = 4
+// Is this better than before?---->4 > 0 → YES
+// So:bigg = 4
+
+// Day 4 → price = 3
+// profit = 3 - 1 = 2
+// Is 2 better than 4?-->NO → ignore
+
+// Day 5 → price = 6
+// profit = 6 - 1 = 5--->Is 5 better than 4?
+// YES, bigg = 5
+
+// Day 6 → price = 4
+// profit = 4 - 1 = 3
+// Is 3 better than 5?-->NO → ignore
+
+// Step 5: Final Answer
+// bigg = 5
+
+// Buy at 1, sell at 6.
