@@ -112,3 +112,96 @@ class Solution {
     }
 }
 
+<----------------------------------------move zeroes---------------------------------------------------->
+    class Solution {
+    public void moveZeroes(int[] nums) {
+        //sorting method
+        for(int i=0;i<nums.length-1;i++)  
+         {
+             for(int j=0;j<nums.length-1;j++)
+             {
+                 if(nums[j]==0){
+                    int temp=nums[j];
+                    nums[j]=nums[j+1];
+                    nums[j+1]=temp;
+                 }
+            }
+                  
+         }  
+  }
+}
+ class Solution {
+    public void moveZeroes(int[] nums) {
+        //All non-zero values are packed at the front
+        //Values after index pos are garbage and don’t matter
+
+        int pos = 0;
+         for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[pos++] = nums[i];
+            }
+        }
+
+        while (pos < nums.length) {
+            nums[pos++] = 0;
+        }
+    }
+}
+Initial State:
+nums = [0, 1, 0, 3, 12]
+pos = 0
+
+First for Loop (Copy Non-Zero Elements Forward)
+i = 0
+nums[0] = 0 → condition false---->No change.
+nums = [0, 1, 0, 3, 12]
+pos = 0
+
+i = 1
+nums[1] = 1 → non-zero
+nums[pos] = nums[1]
+nums[0] = 1
+pos++
+nums = [1, 1, 0, 3, 12]
+pos = 1
+
+i = 2
+nums[2] = 0 → skip
+nums = [1, 1, 0, 3, 12]
+pos = 1
+
+i = 3
+nums[3] = 3 → non-zero
+nums[1] = 3
+pos++
+nums = [1, 3, 0, 3, 12]
+pos = 2
+
+i = 4
+nums[4] = 12 → non-zero
+nums[2] = 12
+pos++
+nums = [1, 3, 12, 3, 12]
+pos = 3
+End of for Loop
+
+nums = [1, 3, 12, ?, ?]
+pos = 3
+
+Second while Loop (Fill Remaining with Zeros)
+pos = 3
+nums[3] = 0
+pos++
+nums = [1, 3, 12, 0, 12]
+pos = 4
+
+pos = 4
+nums[4] = 0
+pos++
+nums = [1, 3, 12, 0, 0]
+pos = 5
+
+Exit Loop (pos == nums.length)
+Final Output
+[1, 3, 12, 0, 0]
+
