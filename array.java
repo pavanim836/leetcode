@@ -250,3 +250,31 @@ class Solution {
     }
 }
     
+<-----------------remove duplicates in sorted array-------------------------------->
+//removing numbers which are repeated and return thr number of unique elements--->replacind method
+<----------------------------------answer----------------------->
+    class Solution {
+    public int removeDuplicates(int[] nums) {
+        int i=0;
+        for(int j=1;j<nums.length;j++)
+        {
+            if(nums[i]!=nums[j])
+            {
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return i+1;
+    }
+}
+//eg:nums=[1,1,2]
+1>>//i=0;-->nums[i]=1
+   //j=1;-->nums[j]=1
+   //nums[i]!=nums[j]---->false
+2>>//i=0;-->nums[i]=1;
+   //j=2;-->nums[j]=2;
+   //nums[i]!=nums[j]---->true
+   //i++;---->i=1;nums[i]=1
+   //replacing nums[i] i.e., 1 with nums[j] i.e., 2
+3>>//returning i+1 ie.,2;
+
