@@ -303,3 +303,41 @@ class Solution {
         return res;
     }
 }
+<-----------------------------------------count primes-------------------------------------------------->
+import java.util.Arrays;
+
+class Solution {
+    public int countPrimes(int n) {
+        if (n <= 2){
+         return 0;
+        }
+        boolean[] isPrime = new boolean[n];
+        Arrays.fill(isPrime, true);
+
+        isPrime[0] = false;
+        isPrime[1] = false;
+
+        for (int i = 2; i * i < n; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j < n; j += i) {
+                    isPrime[j] = false;
+                }
+            }
+        }
+
+        int count = 0;
+        for (int i = 2; i < n; i++) {
+            if (isPrime[i]) count++;
+        }
+
+        return count;
+    }
+}
+//it starts checking from 2, i considers all the multiples of as not prime.in the same
+//way it checks for numbers less  than root of i. Bcz after the root of given number the divisors repeat.
+//eg: for n=12--->root of 12=3.4
+    //multiples of 12--->2*6, 3*4, 4*3, 6*2
+    //-->here after 3 the divivsors repeat.
+    //so its enough to check until the root of given number
+    //in 2*6 --> for 2 one loop(i)
+    //       --> for 6 one loop(j), where it starts checks from 2*2, 2*4, 2*6, 2*8 [bcz, j=j+i -- j=j+2]
