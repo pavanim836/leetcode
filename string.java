@@ -170,6 +170,35 @@ e → how many times?
 t → how many times?
 So the natural structure is: character → frequency
 This is a key → value relationship.
+<-----------------------------------largest even number------------------------------------------>
+class Solution {
+    public String largestEven(String s) {
+        int even=-1;
+        for(int i=0;i<s.length();i++){
+            if((s.charAt(i)-'0')%2==0){
+                even=i;
+            }
+        }
+        if(even==-1){
+            return "";
+        }
+        return s.substring(0,even+1);
+    }
+}
+//You are given a string s consisting only of the characters '1' and '2'.
+class Solution {
+    public String largestEven(String s) {
+        for(int i=s.length()-1;i>=0;i--){
+            if(s.charAt(i)=='2'){
+                return s.substring(0,i+1);
+            }
+        }
+       
+            return "";
+       
+    }
+}
+
 
 
 
