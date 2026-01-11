@@ -341,3 +341,31 @@ class Solution {
     //so its enough to check until the root of given number
     //in 2*6 --> for 2 one loop(i)
     //       --> for 6 one loop(j), where it starts checks from 2*2, 2*4, 2*6, 2*8 [bcz, j=j+i -- j=j+2]
+<-----------------------------------number of centered subarrays---------------------------------------->
+
+import java.util.HashMap;
+class Solution {
+    public int centeredSubarrays(int[] nums) {
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            int sum=0;
+            for(int j=i;j<nums.length;j++){
+                sum+=nums[j];
+                for(int k=i;k<=j;k++){
+                    if(nums[k]==sum){
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+}
+//Input: nums = [-1,1,0]
+//Output: 5
+//Explanation:
+//->All single-element subarrays ([-1], [1], [0]) are centered.
+//->The subarray [1, 0] has a sum of 1, which is present in the subarray.
+//->The subarray [-1, 1, 0] has a sum of 0, which is present in the subarray.
+//->Thus, the answer is 5.
