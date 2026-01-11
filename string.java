@@ -198,7 +198,36 @@ class Solution {
        
     }
 }
-
+<-----------------------------count residue prefixes-------------------------------->
+    class Solution {
+    public int residuePrefixes(String s) {
+   
+        int count=0;
+        for(int i=1;i<=s.length();i++){
+            String prefix=s.substring(0,i);
+            boolean seen[]=new boolean[26];
+             int distinct=0;
+            for(int j=0;j<prefix.length();j++){
+                    char c=prefix.charAt(j);
+                    if(!seen[c-'a']){
+                        seen[c-'a']=true;
+                        distinct++;
+                    }
+            }
+           int length=prefix.length();
+            if(distinct==length%3){
+                count++;
+            }
+        }
+        return count;
+    }
+}
+//Input: s = "abc"
+//Output: 2
+//Explanation:​​​​​​​
+//->Prefix "a" has 1 distinct character and length modulo 3 is 1, so it is a residue.
+//->Prefix "ab" has 2 distinct characters and length modulo 3 is 2, so it is a residue.
+//->Prefix "abc" does not satisfy the condition. Thus, the answer is 2.©leetcode
 
 
 
