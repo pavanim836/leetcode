@@ -416,3 +416,18 @@ class Solution {
         return k;
     }
 }
+<----------------------------------shuffle the array--------------------------------------------->
+    class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] result = new int[2 * n];
+        int index = 0;
+
+        for (int i = 0; i < n; i++) {
+            result[index++] = nums[i];      // xi
+            result[index++] = nums[i + n];  // yi
+        }
+
+        return result;
+    }
+}
+
