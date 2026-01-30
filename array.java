@@ -373,31 +373,33 @@ class Solution {
 <--------------------------------kids with greatest number of candies------------------------------------>
 //Input: candies = [2,3,5,1,3], extraCandies = 3
 //Output: [true,true,true,false,true] 
-//Explanation: If you give all extraCandies to:
-//- Kid 1, they will have 2 + 3 = 5 candies, which is the greatest among the kids.
-//- Kid 2, they will have 3 + 3 = 6 candies, which is the greatest among the kids.
-//- Kid 3, they will have 5 + 3 = 8 candies, which is the greatest among the kids.
-//- Kid 4, they will have 1 + 3 = 4 candies, which is not the greatest among the kids.
-//- Kid 5, they will have 3 + 3 = 6 candies, which is the greatest among the kids.
+//Explanation: 
+--> first find maximum in the candies array
+-->even if we add extracandies to the elements in candies array it should be greater than maximum
+-->then only it should return true otherwise false
+    in that candies array maximum is 5
+    for all the elements in that array if we add extra candies it will be greater then 5 expect 1
+    
 <-----------------------------------answer------------------------------------>
-    class Solution {
+   class Solution {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        List<Boolean> kwc=new ArrayList<>();
-        int max=candies[0];
-        for (int i=0;i<candies.length;i++){
-            if(candies[i]>max){
-                max=candies[i];
+        List<Boolean> res=new ArrayList<>();
+        int max=0;
+        for(int i:candies){
+            if(i>max){
+                max=i;
             }
         }
-         for (int i=0;i<candies.length;i++){
-            if(candies[i]+extraCandies>=max){
-                kwc.add(true);
+        for(int i:candies){
+            if(i+extraCandies>=max){
+                res.add(true);
             }
             else{
-                kwc.add(false);
+                res.add(false);
             }
+
         }
-        return kwc;
+      return res;
     }
 }
 <-------------------------------------remove element------------------------------------>
