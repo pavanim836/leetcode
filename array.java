@@ -416,6 +416,12 @@ class Solution {
         return k;
     }
 }
+eg:nums=[3,2,2,3] val=3
+//we have to remove all the values that are 3 in nums array
+i=0--->3==3 so false
+i=1--->2!=3 so nums[0] (bcz k=0) =nums[1]---->nums=[2]---->k++-->k=1
+i=2--->2!=3 so nums[1] (bcz k=1) =nums[2]---->nums=[2,2]---->k++-->k=2
+i=3--->3==3 so false
 <----------------------------------shuffle the array--------------------------------------------->
     class Solution {
     public int[] shuffle(int[] nums, int n) {
