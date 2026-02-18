@@ -365,14 +365,17 @@ class Solution {
 <-------------------------------ransom note---------------------------->
     class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        int[] count = new int[26];
+        int[] count = new int[26]; 
 
-        for (char c : magazine.toCharArray()) {
-            count[c - 'a']++;
+        for (char c : magazine.toCharArray()) {  //c iterates through the string magazine, each character in string is converted to character array ---> c=['a','b','c'.....]
+            count[c - 'a']++;  //each character ASCII value is subtracted with ASCII value of a(97) --->then it is incremented and stored in array count
         }
 
         for (char c : ransomNote.toCharArray()) {
-            if (--count[c - 'a'] < 0) return false;
+            if ([c - 'a'] == 0){  //if the count of the caracter in array is then it is not present in magazine, then it will be false
+                return false;
+            }
+            count[c-'a']--; //if the character is present then decrement it
         }
 
         return true;
@@ -507,6 +510,7 @@ Output: "fl"
         return maxLen;
     }
 }
+
 
 
 
