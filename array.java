@@ -480,24 +480,28 @@ i=3--->3==3 so false
 <--------------------merge sorted array------------------------------->
     class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = m - 1;       // last index of nums1's valid part
-        int j = n - 1;       // last index of nums2
-        int k = m + n - 1;   // last index of nums1
-        
-        while (i >= 0 && j >= 0) {
-            if (nums1[i] > nums2[j]) {
-                nums1[k--] = nums1[i--];
-            } else {
-                nums1[k--] = nums2[j--];
+        int i=m-1;
+        int j=n-1;
+        int k=m+n-1;
+        while(j>=0){ //iterate till j>=0 in nums2
+            if(i>=0 && nums1[i]>nums2[j]){ // as it is sorted array all the bigger elements will be in last
+                nums1[k]=nums1[i];
+                k--;
+                i--;
             }
-        }
-        
-        // Copy remaining nums2 elements (if any)
-        while (j >= 0) {
-            nums1[k--] = nums2[j--];
+            else{
+                nums1[k]=nums2[j];
+                k--;
+                j--;
+            }
         }
     }
 }
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+//place i at 3 in nums1 and j at 6 in nums2
+//place k at last position of nums1
 <------------------minimum absolute difference-------------------------------->
     import java.util.*;
 
